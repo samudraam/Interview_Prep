@@ -14,7 +14,12 @@ A collection of C++ solutions and notes for common coding interview problems, or
 
 Given a 1-indexed array sorted in non-decreasing order, find two numbers that add up to a target and return their (1-indexed) positions.
 
-> Note: this file currently contains the prefix-sum/hash-map solution for *Subarray Sum = K* (see below) rather than a two-pointer solution — worth revisiting to implement the sorted two-pointer approach.
+**Approach:**
+- Use two pointers, `left` starting at index 0 and `right` at the last index.
+- If `numbers[left] + numbers[right] == target`, return `[left + 1, right + 1]` (1-indexed).
+- If the sum is too small, move `left` up; if too large, move `right` down.
+
+> Note: currently returns 0-indexed positions (`left`, `right`) instead of the required 1-indexed `[left + 1, right + 1]` — needs a small fix.
 
 ### 2. Prefix Sum + Hash Map — Subarray Sum Equals K
 **File:** [arrays/subarraySum/SubSum.cpp](arrays/subarraySum/SubSum.cpp)
@@ -74,7 +79,7 @@ This repo includes a [.vscode/tasks.json](.vscode/tasks.json) task ("C/C++: clan
 ```
 Interview_Prep/
 ├── 2Sum/
-│   └── 2sum.cpp              # Two Sum II (currently: Subarray Sum = K solution)
+│   └── 2sum.cpp              # Two Sum II (two-pointer solution)
 ├── arrays/
 │   └── subarraySum/
 │       └── SubSum.cpp        # Subarray Sum Equals K (prefix sum + hash map)
