@@ -18,62 +18,66 @@ Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We retu
 // include libraries 
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 
 using namespace std;
 
-int subarraySum(vector<int>& nums, int k){
-    // HASH MAP: x the number : how many times (y) x has appeared in prefix sum 
-    unordered_map<int, int> map;
-    map[0]=1;
+// * twoSum(nums, t)
+vector<int> twoSum(vector<int>& numbers, int target) {
+    // Already Sorted Non-decending
+    int left = 0;
+    int right = numbers.size() - 1;
 
-    // running prefix sum
-    int prefix = 0; 
-    // count of valid subarrays
-    int count = 0;
+    //declare vector to store values
+    vector<int> valid;
 
-    for (int x : nums){
-        prefix += x;
-        int need = prefix - k; //compute what we need
 
-        cout << "x=" << x
-             << " | prefix=" << prefix
-             << " | need=prefix-k=" << need
-             << " | map[need]=" << (map.count(need) ? map[need] : 0);
-
-        if (map.count(need)){
-            count += map[need];
-            cout << " -> MATCH, count=" << count;
+    while(left < right){
+        int sum = numbers[left] + numbers[right];
+        //! case 1: num[l] + numbers[r] = target 
+        if (sum == target){
+            valid.push_back(left + 1);
+            valid.push_back(right + 1);
+            return valid;
         }
-        cout << endl;
-
-        map[prefix]++;
-        cout << "  map[" << prefix << "] now = " << map[prefix] << endl;
+        //! case 2: num[l] + numbers[r] > target   
+        // *  sum is too small, move left up
+        else if (sum < target){
+            left++;
+        }
+        //! case 3: num[l] + numbers[r] < target  
+        // *  sum is too small, move right down
+        else {
+            right--;
+        }
     }
 
-    return count;
+    return valid;
+    
+}
+
+void printVector(const vector<int>& vec) {
+    cout << "[";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        cout << vec[i];
+        if (i < vec.size() - 1) {
+            cout << ", ";
+        }
+    }
+    cout << "]";
 }
 
 int main() {
-    // Test case 1 — your array
-    vector<int> nums1 = {2, 1, 4, 3, 1};
-    int k1 = 3;
-    cout << "Test 1: \n" << subarraySum(nums1, k1) << endl;  // expect 2
+    vector<int> nums1 = {2, 7, 11, 15};
+    int k1 = 9;
 
-    // Test case 2 — from the problem
-    vector<int> nums2 = {1, 1, 1};
-    int k2 = 2;
-    cout << "Test 2: \n" << subarraySum(nums2, k2) << endl;  // expect 2
-
-    // Test case 3 — single element match
-    vector<int> nums3 = {3};
-    int k3 = 3;
-    cout << "Test 3: \n" << subarraySum(nums3, k3) << endl;  // expect 1
-
-    // Test case 4 — no valid subarrays
-    vector<int> nums4 = {1, 2, 3};
-    int k4 = 7;
-    cout << "Test 4:\n " << subarraySum(nums4, k4) << endl;  // expect 0
+    cout << "Test 1: ";
+    vector<int> result = twoSum(nums1, k1);
+    if (!result.empty()) {
+        printVector(result);  // Use the helper function to print the vector
+    } else {
+        cout << "No solution found";
+    }
+    cout << endl;
 
     return 0;
 }
