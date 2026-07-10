@@ -6,6 +6,9 @@ A collection of C++ solutions and notes for common coding interview problems, or
 ### Google Docs notes
 **Document:** [Cracking the Interview](https://docs.google.com/document/d/1M8su2bPD2Yx9kSV9dwq1l3wsuRuLdHrt2B9Q9QIFJgI/edit?usp=sharing)
 
+### Textbook
+[Mastering Algorithms for Problem Solving in C++](https://www.educative.io/courses/mastering-algorithms-for-problem-solving-in-cpp)
+
 ## Topics Covered
 
 ### 1. Two Pointers — Two Sum II (Sorted Array)
