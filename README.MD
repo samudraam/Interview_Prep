@@ -2,6 +2,13 @@
 
 A collection of C++ solutions and notes for common coding interview problems, organized by topic.
 
+## Compile & Run Template
+
+```bash
+g++ <path/to/file>.cpp -o <output_name> && ./<output_name>
+```
+
+See [How to Run](#how-to-run) below for full details and examples.
 
 ### Google Docs notes
 **Document:** [Cracking the Interview](https://docs.google.com/document/d/1M8su2bPD2Yx9kSV9dwq1l3wsuRuLdHrt2B9Q9QIFJgI/edit?usp=sharing)
@@ -12,7 +19,7 @@ A collection of C++ solutions and notes for common coding interview problems, or
 ## Topics Covered
 
 ### 1. Two Pointers — Two Sum II (Sorted Array)
-**File:** [2Sum/2sum.cpp](2Sum/2sum.cpp)
+**File:** [arrays/2Sum/2sum.cpp](arrays/2Sum/2sum.cpp)
 **Problem:** [LeetCode 167 — Two Sum II](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
 Given a 1-indexed array sorted in non-decreasing order, find two numbers that add up to a target and return their (1-indexed) positions.
@@ -57,7 +64,7 @@ g++ <file>.cpp -o <output_name> && ./<output_name>
 
 ```bash
 # Two Sum II
-g++ 2Sum/2sum.cpp -o 2sum && ./2sum
+g++ arrays/2Sum/2sum.cpp -o 2sum && ./2sum
 
 # Subarray Sum Equals K
 g++ arrays/subarraySum/SubSum.cpp -o subsum && ./subsum
@@ -81,11 +88,15 @@ This repo includes a [.vscode/tasks.json](.vscode/tasks.json) task ("C/C++: clan
 
 ```
 Interview_Prep/
-├── 2Sum/
-│   └── 2sum.cpp              # Two Sum II (two-pointer solution)
 ├── arrays/
+│   ├── 2Sum/
+│   │   └── 2sum.cpp          # Two Sum II (two-pointer solution)
 │   └── subarraySum/
 │       └── SubSum.cpp        # Subarray Sum Equals K (prefix sum + hash map)
+├── Mastering_Algos/
+│   └── ch2/
+│       ├── beer.cpp
+│       └── fibbMult.cpp
 ├── linked_lists/
 │   └── LinkedList.cpp        # Doubly linked list (WIP)
 ├── reading/
